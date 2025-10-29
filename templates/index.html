@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora Web</h1>
+        <p>Una aplicación Flask desplegada en Railway</p>
+        
+        <form method="POST" class="calculator-form">
+            <div class="input-group">
+                <label for="num1">Primer número:</label>
+                <input type="text" id="num1" name="num1" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="operacion">Operación:</label>
+                <select id="operacion" name="operacion" required>
+                    <option value="suma">Suma (+)</option>
+                    <option value="resta">Resta (-)</option>
+                    <option value="multiplicacion">Multiplicación (×)</option>
+                    <option value="division">División (÷)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="num2">Segundo número:</label>
+                <input type="text" id="num2" name="num2" required>
+            </div>
+            
+            <button type="submit" class="btn">Calcular</button>
+        </form>
+        
+        {% if resultado is not none %}
+        <div class="result success">
+            <h3>Resultado: {{ resultado }}</h3>
+        </div>
+        {% endif %}
+        
+        {% if error %}
+        <div class="result error">
+            <h3>{{ error }}</h3>
+        </div>
+        {% endif %}
+        
+        <div class="info">
+            <h3>Instrucciones:</h3>
+            <ul>
+                <li>Ingresa dos números en los campos correspondientes</li>
+                <li>Selecciona la operación que deseas realizar</li>
+                <li>Haz clic en "Calcular" para ver el resultado</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
